@@ -1,0 +1,330 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="fadeTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <clipPath id="skyClip">
+      <rect x="0" y="0" width="800" height="630"/>
+    </clipPath>
+
+    <clipPath id="starClip">
+      <rect x="0" y="0" width="800" height="550"/>
+    </clipPath>
+
+    <clipPath id="trainClip">
+      <path d="M 55 490 L 135 410 L 760 410 L 760 530 L 100 530 Q 50 530 55 490 Z"/>
+    </clipPath>
+
+    <clipPath id="door1Clip">
+      <rect x="260" y="430" width="45" height="80" rx="3"/>
+    </clipPath>
+    <clipPath id="door2Clip">
+      <rect x="530" y="430" width="45" height="80" rx="3"/>
+    </clipPath>
+  </defs>
+
+  <!-- 天空 -->
+  <rect width="800" height="680" fill="#87CEEB">
+    <animate attributeName="fill"
+      values="#87CEEB;#87CEEB;#FF8C42;#0d1030;#0d1030;#0d1030;#FF8C42;#87CEEB;#87CEEB"
+      keyTimes="0; 0.2; 0.25; 0.3; 0.7; 0.75; 0.8; 0.85; 1"
+      dur="20s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- 旋转天空盘：太阳 + 月亮 -->
+  <g clip-path="url(#skyClip)">
+    <g>
+      <animateTransform attributeName="transform" type="rotate"
+        from="0 400 550" to="360 400 550" dur="20s" repeatCount="indefinite"/>
+      <circle cx="400" cy="270" r="50" fill="#FFD166">
+        <animate attributeName="fill"
+          values="#FFD166;#FFD166;#FF8C42;#E63946;#FF8C42;#FFD166"
+          keyTimes="0; 0.2; 0.25; 0.3; 0.75; 0.8"
+          dur="20s" repeatCount="indefinite"/>
+      </circle>
+      <g>
+        <circle cx="400" cy="830" r="45" fill="#F0F4F8"/>
+        <circle cx="385" cy="815" r="8" fill="#D0D8E0" opacity="0.6"/>
+        <circle cx="415" cy="840" r="5" fill="#D0D8E0" opacity="0.5"/>
+        <circle cx="395" cy="850" r="6" fill="#D0D8E0" opacity="0.4"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- 星星 -->
+  <g clip-path="url(#starClip)">
+    <g>
+      <animateTransform attributeName="transform" type="rotate"
+        from="0 400 550" to="360 400 550" dur="20s" repeatCount="indefinite"/>
+      <g>
+        <animate attributeName="opacity"
+          values="0; 0; 0; 1; 1; 0; 0"
+          keyTimes="0; 0.28; 0.32; 0.4; 0.65; 0.72; 1"
+          dur="20s" repeatCount="indefinite"/>
+        <circle cx="400" cy="400" r="2" fill="#FFFFFF"/>
+        <circle cx="300" cy="420" r="1.5" fill="#FFFFFF"/>
+        <circle cx="500" cy="420" r="1.8" fill="#FFFFFF"/>
+        <circle cx="350" cy="350" r="2.5" fill="#FFFFFF"/>
+        <circle cx="450" cy="350" r="2" fill="#FFFFFF"/>
+        <circle cx="250" cy="480" r="1.5" fill="#FFFFFF"/>
+        <circle cx="550" cy="480" r="1.8" fill="#FFFFFF"/>
+        <circle cx="400" cy="300" r="2.2" fill="#FFFFFF"/>
+        <circle cx="320" cy="380" r="1.6" fill="#FFFFFF"/>
+        <circle cx="480" cy="380" r="1.4" fill="#FFFFFF"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- 云朵 -->
+  <g>
+    <animateTransform attributeName="transform" type="translate" from="900,0" to="-300,0" dur="30s" repeatCount="indefinite"/>
+    <path d="M 120 300 A 30 30 0 0 1 180 300 A 40 40 0 0 1 250 310 A 30 30 0 0 1 280 350 L 120 350 A 30 30 0 0 1 120 300 Z" fill="#FFFFFF" opacity="0.6"/>
+  </g>
+  <g>
+    <animateTransform attributeName="transform" type="translate" from="900,0" to="-300,0" dur="42s" begin="10s" repeatCount="indefinite"/>
+    <path d="M 600 220 A 25 25 0 0 1 650 220 A 35 35 0 0 1 710 230 A 25 25 0 0 1 740 260 L 600 260 A 25 25 0 0 1 600 220 Z" fill="#FFFFFF" opacity="0.45"/>
+  </g>
+
+  <!-- 顶部 Loading 区 -->
+  <rect x="0" y="0" width="800" height="150" fill="url(#fadeTop)"/>
+
+  <!-- Loading + 像素指示器 + 别急（整组居中） -->
+  <text x="280" y="50" text-anchor="middle"
+    font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+    font-size="28" font-weight="600" fill="#2B2D42">Loading
+    <tspan><animate attributeName="opacity" values="1;0.2;1" dur="1.2s" begin="0s" repeatCount="indefinite"/>.</tspan>
+    <tspan><animate attributeName="opacity" values="1;0.2;1" dur="1.2s" begin="0.3s" repeatCount="indefinite"/>.</tspan>
+    <tspan><animate attributeName="opacity" values="1;0.2;1" dur="1.2s" begin="0.6s" repeatCount="indefinite"/>.</tspan>
+  </text>
+
+  <!-- 像素加载指示器（Loading 右侧 15px） -->
+  <g transform="translate(365, 23) scale(4)" shape-rendering="crispEdges" fill="#2B2D42">
+    <rect x="0" y="0" width="2" height="2"><animate attributeName="opacity" values="1;0.15;1" dur="1s" begin="-1s" repeatCount="indefinite"/></rect>
+    <rect x="4" y="0" width="2" height="2"><animate attributeName="opacity" values="1;0.15;1" dur="1s" begin="-0.875s" repeatCount="indefinite"/></rect>
+    <rect x="8" y="0" width="2" height="2"><animate attributeName="opacity" values="1;0.15;1" dur="1s" begin="-0.75s" repeatCount="indefinite"/></rect>
+    <rect x="8" y="4" width="2" height="2"><animate attributeName="opacity" values="1;0.15;1" dur="1s" begin="-0.625s" repeatCount="indefinite"/></rect>
+    <rect x="8" y="8" width="2" height="2"><animate attributeName="opacity" values="1;0.15;1" dur="1s" begin="-0.5s" repeatCount="indefinite"/></rect>
+    <rect x="4" y="8" width="2" height="2"><animate attributeName="opacity" values="1;0.15;1" dur="1s" begin="-0.375s" repeatCount="indefinite"/></rect>
+    <rect x="0" y="8" width="2" height="2"><animate attributeName="opacity" values="1;0.15;1" dur="1s" begin="-0.25s" repeatCount="indefinite"/></rect>
+    <rect x="0" y="4" width="2" height="2"><animate attributeName="opacity" values="1;0.15;1" dur="1s" begin="-0.125s" repeatCount="indefinite"/></rect>
+  </g>
+
+  <!-- 别急 让车开一会（无背景，与 Loading 一起居中） -->
+  <text x="520" y="50" text-anchor="middle"
+    font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif"
+    font-size="20" font-weight="600" fill="#2B2D42">别急 让车开一会</text>
+
+  <!-- 场景 -->
+  <g transform="translate(0, 80)">
+
+    <rect x="0" y="550" width="800" height="50" fill="#D3D9DF"/>
+    <line x1="0" y1="550" x2="800" y2="550" stroke="#A8B2BD" stroke-width="3"/>
+
+    <rect x="0" y="550" width="800" height="50" fill="#0d1030">
+      <animate attributeName="opacity"
+        values="0; 0; 0.7; 0.7; 0.7; 0; 0"
+        keyTimes="0; 0.25; 0.32; 0.68; 0.75; 0.82; 1"
+        dur="20s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- ===== 接触网（快速向右移动，时长 0.5s） ===== -->
+    <g>
+      <animateTransform attributeName="transform" type="translate"
+        from="0,0" to="200,0" dur="0.5s" repeatCount="indefinite"/>
+
+      <line x1="-200" y1="360" x2="1000" y2="360" stroke="#4A4E69" stroke-width="2"/>
+
+      <line x1="-100" y1="360" x2="-100" y2="550" stroke="#4A4E69" stroke-width="5"/>
+      <line x1="-115" y1="360" x2="-85" y2="360" stroke="#4A4E69" stroke-width="4"/>
+
+      <line x1="100" y1="360" x2="100" y2="550" stroke="#4A4E69" stroke-width="5"/>
+      <line x1="85" y1="360" x2="115" y2="360" stroke="#4A4E69" stroke-width="4"/>
+
+      <line x1="300" y1="360" x2="300" y2="550" stroke="#4A4E69" stroke-width="5"/>
+      <line x1="285" y1="360" x2="315" y2="360" stroke="#4A4E69" stroke-width="4"/>
+
+      <line x1="500" y1="360" x2="500" y2="550" stroke="#4A4E69" stroke-width="5"/>
+      <line x1="485" y1="360" x2="515" y2="360" stroke="#4A4E69" stroke-width="4"/>
+
+      <line x1="700" y1="360" x2="700" y2="550" stroke="#4A4E69" stroke-width="5"/>
+      <line x1="685" y1="360" x2="715" y2="360" stroke="#4A4E69" stroke-width="4"/>
+
+      <line x1="900" y1="360" x2="900" y2="550" stroke="#4A4E69" stroke-width="5"/>
+      <line x1="885" y1="360" x2="915" y2="360" stroke="#4A4E69" stroke-width="4"/>
+    </g>
+
+    <!-- 银色轨道 -->
+    <line x1="0" y1="550" x2="800" y2="550" stroke="#B8C0C8" stroke-width="4" stroke-linecap="round"/>
+    <line x1="0" y1="560" x2="800" y2="560" stroke="#B8C0C8" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- ===== 风 ===== -->
+    <g>
+      <animateTransform attributeName="transform" type="translate"
+        from="-200,0" to="900,0" dur="3s" repeatCount="indefinite"/>
+      <g>
+        <animate attributeName="opacity"
+          values="1; 1; 1; 0; 0"
+          keyTimes="0; 0.5; 0.75; 0.88; 1"
+          dur="3s" repeatCount="indefinite"/>
+        <line x1="0" y1="450" x2="80" y2="450" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+        <line x1="-20" y1="480" x2="60" y2="480" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+        <line x1="10" y1="510" x2="80" y2="510" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+      </g>
+    </g>
+    <g>
+      <animateTransform attributeName="transform" type="translate"
+        from="-200,0" to="900,0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+      <g>
+        <animate attributeName="opacity"
+          values="1; 1; 1; 0; 0"
+          keyTimes="0; 0.5; 0.75; 0.88; 1"
+          dur="3s" begin="1.5s" repeatCount="indefinite"/>
+        <line x1="10" y1="460" x2="90" y2="460" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+        <line x1="-10" y1="490" x2="70" y2="490" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+    </g>
+
+    <!-- 高铁 -->
+    <g>
+      <animateTransform attributeName="transform" type="translate"
+        values="0,0; 0,0; 15,0; 15,0; 0,0; 0,0; -15,0; -15,0; 0,0; 0,0"
+        keyTimes="0; 0.15; 0.25; 0.3; 0.4; 0.6; 0.7; 0.75; 0.85; 1"
+        dur="20s" repeatCount="indefinite"/>
+
+      <!-- 转向架与车轮（逆时针，0.04s） -->
+      <g>
+        <rect x="220" y="528" width="80" height="16" rx="6" fill="#2B2D42"/>
+        <g>
+          <circle cx="240" cy="538" r="12" fill="#4A4E69"/>
+          <animateTransform attributeName="transform" type="rotate" from="360 240 538" to="0 240 538" dur="0.04s" repeatCount="indefinite"/>
+          <circle cx="240" cy="538" r="4" fill="#2B2D42"/>
+          <circle cx="240" cy="532" r="2" fill="#2B2D42"/>
+          <circle cx="240" cy="544" r="2" fill="#2B2D42"/>
+          <circle cx="234" cy="538" r="2" fill="#2B2D42"/>
+          <circle cx="246" cy="538" r="2" fill="#2B2D42"/>
+        </g>
+        <g>
+          <circle cx="280" cy="538" r="12" fill="#4A4E69"/>
+          <animateTransform attributeName="transform" type="rotate" from="360 280 538" to="0 280 538" dur="0.04s" repeatCount="indefinite"/>
+          <circle cx="280" cy="538" r="4" fill="#2B2D42"/>
+          <circle cx="280" cy="532" r="2" fill="#2B2D42"/>
+          <circle cx="280" cy="544" r="2" fill="#2B2D42"/>
+          <circle cx="274" cy="538" r="2" fill="#2B2D42"/>
+          <circle cx="286" cy="538" r="2" fill="#2B2D42"/>
+        </g>
+      </g>
+
+      <g>
+        <rect x="620" y="528" width="80" height="16" rx="6" fill="#2B2D42"/>
+        <g>
+          <circle cx="640" cy="538" r="12" fill="#4A4E69"/>
+          <animateTransform attributeName="transform" type="rotate" from="360 640 538" to="0 640 538" dur="0.04s" repeatCount="indefinite"/>
+          <circle cx="640" cy="538" r="4" fill="#2B2D42"/>
+          <circle cx="640" cy="532" r="2" fill="#2B2D42"/>
+          <circle cx="640" cy="544" r="2" fill="#2B2D42"/>
+          <circle cx="634" cy="538" r="2" fill="#2B2D42"/>
+          <circle cx="646" cy="538" r="2" fill="#2B2D42"/>
+        </g>
+        <g>
+          <circle cx="680" cy="538" r="12" fill="#4A4E69"/>
+          <animateTransform attributeName="transform" type="rotate" from="360 680 538" to="0 680 538" dur="0.04s" repeatCount="indefinite"/>
+          <circle cx="680" cy="538" r="4" fill="#2B2D42"/>
+          <circle cx="680" cy="532" r="2" fill="#2B2D42"/>
+          <circle cx="680" cy="544" r="2" fill="#2B2D42"/>
+          <circle cx="674" cy="538" r="2" fill="#2B2D42"/>
+          <circle cx="686" cy="538" r="2" fill="#2B2D42"/>
+        </g>
+      </g>
+
+      <!-- 车厢连接处 -->
+      <rect x="760" y="415" width="38" height="110" rx="4" fill="#8D99AE" stroke="#2B2D42" stroke-width="3"/>
+      <line x1="770" y1="415" x2="770" y2="525" stroke="#6B7280" stroke-width="2"/>
+      <line x1="785" y1="415" x2="785" y2="525" stroke="#6B7280" stroke-width="2"/>
+
+      <!-- 列车车身 -->
+      <path d="M 55 490 L 135 410 L 760 410 L 760 530 L 100 530 Q 50 530 55 490 Z"
+            fill="#F5F8FB" stroke="#2B2D42" stroke-width="4"/>
+
+      <!-- 车身细节 -->
+      <g clip-path="url(#trainClip)">
+        <rect x="55" y="410" width="705" height="6" fill="#FFFFFF" opacity="0.9"/>
+        <line x1="55" y1="480" x2="760" y2="480" stroke="#F5A623" stroke-width="10"/>
+        <line x1="55" y1="495" x2="760" y2="495" stroke="#D4AF37" stroke-width="4"/>
+        <rect x="55" y="520" width="705" height="10" fill="#4A4E69"/>
+
+        <rect x="400" y="522" width="25" height="5" fill="#2B2D42"/>
+        <rect x="440" y="522" width="25" height="5" fill="#2B2D42"/>
+        <rect x="480" y="522" width="25" height="5" fill="#2B2D42"/>
+
+        <!-- 侧窗 -->
+        <path d="M 175 485 L 175 455 L 250 455 L 250 485 Z" fill="#1A1A2E"/>
+        <path d="M 310 485 L 310 455 L 520 455 L 520 485 Z" fill="#1A1A2E"/>
+        <path d="M 580 485 L 580 455 L 760 455 L 760 485 Z" fill="#1A1A2E"/>
+      </g>
+
+      <!-- ===== 车门 1（含涂装条纹） ===== -->
+      <g>
+        <rect x="260" y="430" width="45" height="80" rx="3" fill="#F5F8FB"/>
+        <rect x="265" y="437" width="35" height="38" rx="2" fill="#1A1A2E"/>
+        <circle cx="297" cy="482" r="2.5" fill="#8D99AE"/>
+        <g clip-path="url(#door1Clip)">
+          <line x1="260" y1="480" x2="305" y2="480" stroke="#F5A623" stroke-width="10"/>
+          <line x1="260" y1="495" x2="305" y2="495" stroke="#D4AF37" stroke-width="4"/>
+        </g>
+        <rect x="260" y="430" width="45" height="80" rx="3" fill="none" stroke="#B8C0C8" stroke-width="1"/>
+      </g>
+
+      <!-- ===== 车门 2（含涂装条纹） ===== -->
+      <g>
+        <rect x="530" y="430" width="45" height="80" rx="3" fill="#F5F8FB"/>
+        <rect x="535" y="437" width="35" height="38" rx="2" fill="#1A1A2E"/>
+        <circle cx="567" cy="482" r="2.5" fill="#8D99AE"/>
+        <g clip-path="url(#door2Clip)">
+          <line x1="530" y1="480" x2="575" y2="480" stroke="#F5A623" stroke-width="10"/>
+          <line x1="530" y1="495" x2="575" y2="495" stroke="#D4AF37" stroke-width="4"/>
+        </g>
+        <rect x="530" y="430" width="45" height="80" rx="3" fill="none" stroke="#B8C0C8" stroke-width="1"/>
+      </g>
+
+      <!-- QFK 标志 -->
+      <g clip-path="url(#trainClip)">
+        <text x="700" y="478" text-anchor="middle"
+          font-family="Arial, sans-serif" font-weight="bold" font-size="18" fill="#FFFFFF">QFK</text>
+
+        <!-- 车号 1：车厢前部 -->
+        <text x="200" y="438" text-anchor="middle"
+          font-family="Arial, sans-serif" font-weight="bold" font-size="10" fill="#1A1A2E">QFK Inc. A-1145</text>
+
+        <!-- 车号 2：车厢中部 -->
+        <text x="450" y="438" text-anchor="middle"
+          font-family="Arial, sans-serif" font-weight="bold" font-size="10" fill="#1A1A2E">QFK Inc. A-1145</text>
+
+        <!-- 车号 3：车厢后部 -->
+        <text x="660" y="438" text-anchor="middle"
+          font-family="Arial, sans-serif" font-weight="bold" font-size="10" fill="#1A1A2E">QFK Inc. A-1145</text>
+      </g>
+
+      <!-- 前窗 -->
+      <path d="M 110 485 L 150 485 L 150 445 Z"
+            fill="#1A1A2E" stroke="#1A1A2E" stroke-width="8" stroke-linejoin="round"/>
+
+      <!-- 白色大灯 -->
+      <circle cx="72" cy="508" r="8" fill="#FFFFFF">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- 单臂受电弓（集电杆与电缆 y=360 对齐） -->
+      <g>
+        <rect x="550" y="408" width="35" height="8" rx="3" fill="#4A4E69"/>
+        <line x1="570" y1="410" x2="520" y2="378" stroke="#4A4E69" stroke-width="5" stroke-linecap="round"/>
+        <line x1="520" y1="378" x2="555" y2="362" stroke="#4A4E69" stroke-width="5" stroke-linecap="round"/>
+        <line x1="535" y1="360" x2="590" y2="360" stroke="#2B2D42" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="570" cy="410" r="4" fill="#2B2D42"/>
+        <circle cx="520" cy="378" r="3" fill="#2B2D42"/>
+      </g>
+    </g>
+
+  </g>
+</svg>
